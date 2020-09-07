@@ -3,10 +3,15 @@ import './App.css';
 
 function App() {
   const [display, setDisplay] = React.useState("");
+<<<<<<< HEAD
   const [isPlayer1Turn, setIsPlayer1Turn] = React.useState(true);
   const [acc, setAcc] = React.useState(0);
   const [isGameOver, setIsGameOver] = React.useState(false); 
  
+=======
+  const [isPlayer1Turn, setIsPlayer1Turn] = React.useState(true); 
+
+>>>>>>> cbbf7c7e835c0ffe891940ed1cdd3608536ccd59
   const [box1, setBox1] = React.useState("");
   const [box4, setBox4] = React.useState("");
   const [box2, setBox2] = React.useState("");
@@ -15,6 +20,7 @@ function App() {
   const [box6, setBox6] = React.useState("");
   const [box7, setBox7] = React.useState("");
   const [box8, setBox8] = React.useState("");
+<<<<<<< HEAD
   const [box9, setBox9] = React.useState(""); 
   
 
@@ -151,6 +157,45 @@ const checkVertical = () => {
       <div style={styles.box} onClick = {() => handleClick(setBox9, setAcc)}><span style={styles.item}>{box9}</span></div>
     </div>
     <div style={styles.messaging}>{display}</div>
+=======
+  const [box9, setBox9] = React.useState(""); // x, null, o
+
+//logic
+const handleClick = (boxFunc) =>{
+  console.log("working");
+
+  if (isPlayer1Turn == true) {
+    boxFunc("X");
+    setIsPlayer1Turn(false); 
+  } else {
+    boxFunc("O");
+    setIsPlayer1Turn(true); 
+  }
+  
+  //boxFunc("X"); 
+
+}
+
+  return (
+    <>
+    <div style={styles.rowContainer}>
+  <div style={styles.box} onClick = {() => handleClick(setBox1)}><span style={styles.item}>{box1}</span></div>
+     <div style={styles.box} onClick = {() => handleClick(setBox2)}><span style={styles.item}>{box2}</span></div>
+     <div style={styles.box} onClick = {() => handleClick(setBox3)}><span style={styles.item}>{box3}</span></div>
+    </div>
+    
+    <div style={styles.rowContainer}>
+      <div style={styles.box} onClick = {() => handleClick(setBox4)}><span style={styles.item}>{box4}</span></div>
+      <div style={styles.box} onClick = {() => handleClick(setBox5)}><span style={styles.item}>{box5}</span></div>
+      <div style={styles.box} onClick = {() => handleClick(setBox6)}><span style={styles.item}>{box6}</span></div>
+    </div>
+
+    <div style={styles.rowContainer}>
+      <div style={styles.box} onClick = {() => handleClick(setBox7)}><span style={styles.item}>{box7}</span></div>
+      <div style={styles.box} onClick = {() => handleClick(setBox8)}><span style={styles.item}>{box8}</span></div>
+      <div style={styles.box} onClick = {() => handleClick(setBox9)}><span style={styles.item}>{box9}</span></div>
+    </div>
+>>>>>>> cbbf7c7e835c0ffe891940ed1cdd3608536ccd59
     </>
   );
 }
@@ -174,6 +219,7 @@ const styles = {
   item: {
     margin: "auto",
     position:"absolute"
+<<<<<<< HEAD
   }, 
   messaging: {
     color: "red",
@@ -183,3 +229,9 @@ const styles = {
 
 export default App;  
 
+=======
+  }
+}
+
+export default App;
+>>>>>>> cbbf7c7e835c0ffe891940ed1cdd3608536ccd59
