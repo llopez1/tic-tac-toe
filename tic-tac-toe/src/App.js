@@ -63,7 +63,7 @@ const checkDiagonal = () => {
         return true
       }
     }
-
+return false; 
 }
 
 
@@ -80,8 +80,9 @@ const checkHortizontal = () => {
         return true; 
       }
 
-    return false; 
+   
   } 
+  return false; 
 }
 
 const checkVertical = () => {
@@ -94,9 +95,8 @@ const checkVertical = () => {
       } else if (box3 !== "" && box3 == box6 && box6 == box9 && box3 == box9) {
         return true; 
       } 
-    
-    return false;
   }
+  return false;
 }
 
 

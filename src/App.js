@@ -3,15 +3,10 @@ import './App.css';
 
 function App() {
   const [display, setDisplay] = React.useState("");
-<<<<<<< HEAD
   const [isPlayer1Turn, setIsPlayer1Turn] = React.useState(true);
   const [acc, setAcc] = React.useState(0);
   const [isGameOver, setIsGameOver] = React.useState(false); 
  
-=======
-  const [isPlayer1Turn, setIsPlayer1Turn] = React.useState(true); 
-
->>>>>>> cbbf7c7e835c0ffe891940ed1cdd3608536ccd59
   const [box1, setBox1] = React.useState("");
   const [box4, setBox4] = React.useState("");
   const [box2, setBox2] = React.useState("");
@@ -20,7 +15,6 @@ function App() {
   const [box6, setBox6] = React.useState("");
   const [box7, setBox7] = React.useState("");
   const [box8, setBox8] = React.useState("");
-<<<<<<< HEAD
   const [box9, setBox9] = React.useState(""); 
   
 
@@ -28,7 +22,7 @@ function App() {
 React.useEffect(()=>{
   console.log("PLAYA", isPlayer1Turn , checkDiagonal() || checkHortizontal() || checkVertical())
   if(checkDiagonal() || checkHortizontal() || checkVertical()) {
-    const player = isPlayer1Turn?"X":"0" //ternary statement
+    const player = isPlayer1Turn?"O":"X" //ternary statement
     setDisplay("WINNER! " + player); 
     setIsGameOver(true); 
   }
@@ -57,43 +51,14 @@ const handleClick = (boxFunc, accumulator) => {
   setIsPlayer1Turn(!isPlayer1Turn); 
   
 } 
-
-// ensures that nulls are not counted as answers
-const nullIsNotAnswer = () => {
-  // this function will return true so that CHECKS can ensure that if is false
-  //row1
-  if(box1== "" && box2 == "" && box3 == "") {
-    return true;
-  }
-  //row2
-if(box4 == "" && box5 == "" && box6 == "") {
-  return true; 
-}
-  //row3
-if (box7 == "" && box8 == ""  && box9 == "") {
-  return true; 
-}
-  //vert1
-if (box1 == "" && box5 == "" && box9=="")  {
-  return true; 
-}
-  //vert2
-if (box3 == "" && box5 == "" && box7 =="") {
-  return true
-} 
-return false; 
-}
-
-nullIsNotAnswer(); 
-
 // CHECKS
 const checkDiagonal = () => {
   if ( acc > 2  ) {
 
-      if (box1 != box1 && box1 == box5 && box5 == box9 && box1 == box9 && box1 != "") {
+      if (box1 !== "" && box1 == box5 && box5 == box9 && box1 == box9) {
         console.log("We have a winner! " + box1);
         return true; 
-      } else if (box1 != box1 && box3 == box5 && box5 == box7 && box3 == box7) {
+      } else if (box3 !== "" && box3 == box5 && box5 == box7 && box3 == box7) {
         console.log("The winner is! " + box3);
         return true
       }
@@ -104,14 +69,13 @@ const checkDiagonal = () => {
 
 const checkHortizontal = () => {
   if (acc > 2) {
-   
-      if(box1 != box1 && box1 == box2 && box2 == box3 && box1 == box3) {
+      if(box1 !== "" && box1 == box2 && box2 == box3 && box1 == box3) {
         console.log(box1 + " WON Row 1");
         return true; 
-      } else if (box4 != box4 && box4 == box5 && box5 == box6 && box4 == box6) {
+      } else if (box4 !== "" && box4 == box5 && box5 == box6 && box4 == box6) {
         console.log(box4 + " WON! Row2");
         return true; 
-      } else if(box7!== box7 && box7 == box8 && box8 == box9 && box7 == box9 ){
+      } else if(box7!== "" && box7 == box8 && box8 == box9 && box7 == box9 ){
         console.log(box7 + " FACK WON! Row3"); 
         return true; 
       }
@@ -122,13 +86,12 @@ const checkHortizontal = () => {
 
 const checkVertical = () => {
   if (acc > 2) {
-
-      if(box1 != box1 && box1 == box4 && box4 == box7 && box1==box7){
+      if(box1 !== "" && box1 == box4 && box4 == box7 && box1==box7){
         console.log(box1 + " WON Row 1");
         return true; 
-      } else if(box2 != box2 && box2 == box5 && box5 == box8 && box2==box8) {
+      } else if(box2 !== "" && box2 == box5 && box5 == box8 && box2==box8) {
         return true; 
-      } else if (box3 != box3 && box3 == box6 && box6 == box9 && box3 == box9) {
+      } else if (box3 !== "" && box3 == box6 && box6 == box9 && box3 == box9) {
         return true; 
       } 
     
@@ -157,45 +120,6 @@ const checkVertical = () => {
       <div style={styles.box} onClick = {() => handleClick(setBox9, setAcc)}><span style={styles.item}>{box9}</span></div>
     </div>
     <div style={styles.messaging}>{display}</div>
-=======
-  const [box9, setBox9] = React.useState(""); // x, null, o
-
-//logic
-const handleClick = (boxFunc) =>{
-  console.log("working");
-
-  if (isPlayer1Turn == true) {
-    boxFunc("X");
-    setIsPlayer1Turn(false); 
-  } else {
-    boxFunc("O");
-    setIsPlayer1Turn(true); 
-  }
-  
-  //boxFunc("X"); 
-
-}
-
-  return (
-    <>
-    <div style={styles.rowContainer}>
-  <div style={styles.box} onClick = {() => handleClick(setBox1)}><span style={styles.item}>{box1}</span></div>
-     <div style={styles.box} onClick = {() => handleClick(setBox2)}><span style={styles.item}>{box2}</span></div>
-     <div style={styles.box} onClick = {() => handleClick(setBox3)}><span style={styles.item}>{box3}</span></div>
-    </div>
-    
-    <div style={styles.rowContainer}>
-      <div style={styles.box} onClick = {() => handleClick(setBox4)}><span style={styles.item}>{box4}</span></div>
-      <div style={styles.box} onClick = {() => handleClick(setBox5)}><span style={styles.item}>{box5}</span></div>
-      <div style={styles.box} onClick = {() => handleClick(setBox6)}><span style={styles.item}>{box6}</span></div>
-    </div>
-
-    <div style={styles.rowContainer}>
-      <div style={styles.box} onClick = {() => handleClick(setBox7)}><span style={styles.item}>{box7}</span></div>
-      <div style={styles.box} onClick = {() => handleClick(setBox8)}><span style={styles.item}>{box8}</span></div>
-      <div style={styles.box} onClick = {() => handleClick(setBox9)}><span style={styles.item}>{box9}</span></div>
-    </div>
->>>>>>> cbbf7c7e835c0ffe891940ed1cdd3608536ccd59
     </>
   );
 }
@@ -219,7 +143,6 @@ const styles = {
   item: {
     margin: "auto",
     position:"absolute"
-<<<<<<< HEAD
   }, 
   messaging: {
     color: "red",
@@ -228,10 +151,3 @@ const styles = {
 }
 
 export default App;  
-
-=======
-  }
-}
-
-export default App;
->>>>>>> cbbf7c7e835c0ffe891940ed1cdd3608536ccd59
