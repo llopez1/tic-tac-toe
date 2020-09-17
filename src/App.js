@@ -99,6 +99,28 @@ const checkVertical = () => {
   }
 }
 
+const reset = () => {
+  // resets boxes
+  setBox1("");
+  setBox2("");
+  setBox3("");
+  setBox4("");
+  setBox5("");
+  setBox6("");
+  setBox7("");
+  setBox8("");
+  setBox9("");
+
+  // sets display, accumulator and turn back to default value
+  setDisplay("");
+  setIsPlayer1Turn(true);
+  setAcc(0); 
+  setIsGameOver(false); 
+
+  //manipulates css to display the button
+
+}
+
 
   return (
     <>
@@ -119,7 +141,12 @@ const checkVertical = () => {
       <div style={styles.box} onClick = {() => handleClick(setBox8, setAcc)}><span style={styles.item}>{box8}</span></div>
       <div style={styles.box} onClick = {() => handleClick(setBox9, setAcc)}><span style={styles.item}>{box9}</span></div>
     </div>
+  <div style={styles.playAgain}>{isGameOver && <button onClick = {() => reset()}>PLAY AGAIN?</button>}</div>
+    
     <div style={styles.messaging}>{display}</div>
+    
+    
+
     </>
   );
 }
@@ -147,7 +174,13 @@ const styles = {
   messaging: {
     color: "red",
     fontSize:35
+  }, 
+  playAgain: {
+    alignItems: "center",
+    height: 20, 
+    width: 100, 
   }
+
 }
 
 export default App;  

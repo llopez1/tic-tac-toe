@@ -54,7 +54,6 @@ const handleClick = (boxFunc, accumulator) => {
 // CHECKS
 const checkDiagonal = () => {
   if ( acc > 2  ) {
-
       if (box1 !== "" && box1 == box5 && box5 == box9 && box1 == box9 && box1 != "") {
         console.log("We have a winner! " + box1);
         return true; 
@@ -120,6 +119,8 @@ const checkVertical = () => {
       <div style={styles.box} onClick = {() => handleClick(setBox9, setAcc)}><span style={styles.item}>{box9}</span></div>
     </div>
     <div style={styles.messaging}>{display}</div>
+    <button>Play Again?</button>
+
     </>
   );
 }
